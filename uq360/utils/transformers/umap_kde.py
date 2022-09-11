@@ -1,6 +1,6 @@
 
 import numpy as np
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA,SparsePCA
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KernelDensity
 from sklearn.preprocessing import StandardScaler
@@ -72,7 +72,7 @@ class UmapKdeTransformer(FeatureTransformer):
                 print()
                 print("UMAP KDE: FIT-TRANSFORM FAILED. REDUCING DIMENSIONS WITH PCA FROM {} TO {}".format(self.ndim+1, self.ndim))
                 print()
-                self.pca = PCA(n_components=self.ndim)
+                self.pca = SparsePCA(n_components=self.ndim)
                 X_copy = self.pca.fit_transform(X_scale)
 
         if self.successful_fit:
