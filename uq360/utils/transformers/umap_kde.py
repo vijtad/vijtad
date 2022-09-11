@@ -37,7 +37,7 @@ class UmapKdeTransformer(FeatureTransformer):
         self.kde_list = []
         self.num_classes = 0
         self.um = UMAP(n_components=n_components, metric='euclidean', n_neighbors=n_neighbors, min_dist=min_dist)
-        self.scaler = StandardScaler()
+        self.scaler = StandardScaler(copy=True,with_mean=False,with_std=False)
         self.successful_fit = True
         self.ndim = None
         self.pca = None
