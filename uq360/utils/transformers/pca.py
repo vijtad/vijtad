@@ -1,5 +1,5 @@
 from sklearn.preprocessing import StandardScaler
-from sklearn.decomposition import PCA
+from sklearn.decomposition import PCA,TruncatedSVD
 from uq360.utils.transformers.feature_transformer import FeatureTransformer
 
 
@@ -11,8 +11,8 @@ class PCATransformer(FeatureTransformer):
     def __init__(self, k=2):
         super(PCATransformer, self).__init__()
         self.fit_status = False
-        self.pca = PCA(n_components=k)
-        self.scaler = StandardScaler()
+        self.pca = TruncatedSVD(n_components=k)
+        self.scaler = StandardScaler(copy=True,with_mean=False,with_std=False)
 
     @classmethod
     def name(cls):
