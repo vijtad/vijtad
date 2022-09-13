@@ -132,6 +132,7 @@ class BatchProjectionHighestImportance(BatchProjection):
 
     # Extract features and create histograms
     def extract_features(self, x, predictions, quantile=0.9, background_hist=None):
+        print('vec shape : ', str(self.index))
         vec = x[:,self.index]
         assert(len(vec.shape) == 1)
         histogram, edges = self.extract_histogram(vec, quantile, background_hist=background_hist)
