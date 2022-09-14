@@ -34,6 +34,7 @@ class FeatureExtractor:
                 self.pointwise_features.append(pwf[0])
                 self.pointwise_feature_objects[pwf[0]] = tr
         if batch_features:
+            print('Batch_features : ', len(batch_features))
             for bf in batch_features:
                 tr = BatchFeature.instance(bf)
                 self.batch_features.append(bf)
